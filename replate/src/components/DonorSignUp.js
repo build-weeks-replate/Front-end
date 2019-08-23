@@ -61,7 +61,7 @@ const DonorSignUp = () => (
         </Form.Field>
         <Form.Field>
           <label>Phone Number</label>
-          <input type="tel" name="phoneNumber" placeholder='Phone Number' />
+          <input type="number" name="phoneNumber" placeholder='Phone Number' />
         </Form.Field>
         <Form.Field>
           <label>Email</label>

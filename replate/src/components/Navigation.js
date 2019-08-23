@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../images/replate-white.svg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 const Header = styled.header`
   top: 0;
@@ -35,7 +35,7 @@ const NavMenu = styled.div`
 
 
 const Navigation = () => {
-  return(
+  return (
     <Header>
       <Nav>
         <a href="#"><img src={logo} className="logo" alt="Replate Logo" /></a>
