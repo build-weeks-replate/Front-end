@@ -45,7 +45,7 @@ const DonorSignUp = () => (
     <LeftContent>
       <img src={icon} alt="Dish Icon" />
       <Header size='huge'>DONOR SIGN UP</Header>
-      <p>Thank you for your interest in Replate and joining the fight to end hunger.</p>
+      <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
     </LeftContent>
     <RightContent>
       <Form>
