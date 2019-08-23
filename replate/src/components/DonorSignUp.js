@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Form, Icon, Header } from 'semantic-ui-react'
+import { Button, Form, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
 import icon from '../images/foodPlate.svg';
 
@@ -43,7 +43,7 @@ const RightContent = styled.div`
 const DonorSignUp = () => (
   <MainContent>
     <LeftContent>
-      <img src={icon} alt="Dish Icon" />
+      <img src={icon} className="dishicon" alt="Dish Icon" />
       <Header size='huge'>DONOR SIGN UP</Header>
       <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
     </LeftContent>

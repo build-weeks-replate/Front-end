@@ -59,6 +59,12 @@ i.icon.gift{
 .logo{
   width: 150px;
 }
+.dishicon{
+  width: 112px;
+}
+div.ui.huge.header{
+  margin: 10px 0;
+}
 .mobile-nav{
   margin-left: auto;
   margin-right: 20px;

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Form, Icon, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
-import icon from '../images/foodPlate.svg';
 
 const Circle = styled.div`
   background: #FBA01C;
@@ -51,7 +50,7 @@ const VolunteerSignUp = () => (
             <Form>
                 <Heading>
                     <Circle>
-                        <CircleNumber>2</CircleNumber>
+                        <CircleNumber>1</CircleNumber>
                     </Circle>
                     <StyledH1>Create Your Account</StyledH1>
                 </Heading>
