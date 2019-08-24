@@ -42,7 +42,7 @@ const RightContent = styled.div`
 const VolunteerSignUp = () => (
     <MainContent>
         <LeftContent>
-            <Icon name='handshake outline' size="massive" />
+            <Icon name='handshake' size="massive" />
             <Header size='huge'>Volunteer Sign Up</Header>
             <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
         </LeftContent>
@@ -56,7 +56,7 @@ const VolunteerSignUp = () => (
                 </Heading>
                 <Form.Field>
                     <label>Volunteer Name</label>
-                    <input type="text" name="companyName" placeholder='Company Name' />
+                    <input type="text" name="volunteerName" placeholder='Volunteer Name' />
                 </Form.Field>
                 <Form.Field>
                     <label>Phone Number</label>
@@ -74,7 +74,7 @@ const VolunteerSignUp = () => (
                     <label>Repeat Password</label>
                     <input type="password" name="password" placeholder="Repeat Password" />
                 </Form.Field>
-                <Button type='submit'>Continue</Button>
+                <Button type='submit'>Submit</Button>
             </Form>
         </RightContent>
     </MainContent>
