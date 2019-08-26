@@ -4,7 +4,7 @@ import { Container } from 'semantic-ui-react';
 import Routes from './components/Routes';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import Footer from './components/Footer';
+// import Footer from './components/Footer';
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
       <Container>
         <Routes />
       </Container>
-      <Footer />
+      {/*<Footer />*/}
     </div>
   );
 }
