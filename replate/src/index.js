@@ -11,6 +11,10 @@ ReactDOM.render(
   <BrowserRouter>
     <App />
   </BrowserRouter>, 
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 0eadf2a86f9955075c932ac8f506093cbb0ac5a7
   document.getElementById('root')
 );
 

@@ -3,7 +3,7 @@ import logo from '../images/replate-rgb.svg';
 import icon from '../images/foodPlate.svg';
 import styled from 'styled-components';
 import { Button, Card, Icon } from 'semantic-ui-react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 const MainContent = styled.div`
   display: flex;

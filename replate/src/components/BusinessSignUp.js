@@ -5,7 +5,7 @@ import icon from '../images/foodPlate.svg';
 import { Link } from 'react-router-dom';
 
 const Circle = styled.div`
-  background: #FBA01C;
+  background: #FBA01D;
   border-radius: 100px;
   width: 50px;
   height: 50px;
@@ -29,8 +29,8 @@ const MainContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
   color: #1F5C70;
+}
 `
 const LeftContent = styled.div`
   width: 35%;
@@ -43,7 +43,7 @@ const RightContent = styled.div`
 
 const BusinessSignUp1 = () => {
   return (
-    <MainContent>
+    <MainContent className="main">
       <LeftContent>
         <img src={icon} className="dishicon" alt="Dish Icon" />
         <Header size='huge'>DONOR SIGN UP</Header>
@@ -86,7 +86,7 @@ const BusinessSignUp1 = () => {
 
 const BusinessSignUp2 = () => {
   return (
-    <MainContent>
+    <MainContent className="main">
       <LeftContent>
         <img src={icon} className="dishicon" alt="Dish Icon" />
         <Header size='huge'>DONOR SIGN UP</Header>
@@ -112,7 +112,7 @@ const BusinessSignUp2 = () => {
             <label>Office Email (Optional)</label>
             <input type="email" name="email" placeholder='Office Email' />
           </Form.Field>
-          <Button type='submit'>Sign Up</Button>
+          <Button type='submit'>Sign&nbsp;Up</Button>
         </Form>
       </RightContent>
     </MainContent>

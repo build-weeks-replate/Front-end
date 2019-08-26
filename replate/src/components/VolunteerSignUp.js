@@ -3,7 +3,7 @@ import { Button, Form, Icon, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
 
 const Circle = styled.div`
-  background: #FBA01C;
+  background: #FBA01D;
   border-radius: 100px;
   width: 50px;
   height: 50px;
@@ -27,7 +27,6 @@ const MainContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
   color: #1F5C70;
 `
 const LeftContent = styled.div`
@@ -40,7 +39,7 @@ const RightContent = styled.div`
 `
 
 const VolunteerSignUp = () => (
-    <MainContent>
+    <MainContent className="main">
         <LeftContent>
             <Icon name='handshake' size="massive" />
             <Header size='huge'>Volunteer Sign Up</Header>
@@ -74,7 +73,7 @@ const VolunteerSignUp = () => (
                     <label>Repeat Password</label>
                     <input type="password" name="password" placeholder="Repeat Password" />
                 </Form.Field>
-                <Button type='submit'>Submit</Button>
+                <Button type='submit'>Sign&nbsp;Up</Button>
             </Form>
         </RightContent>
     </MainContent>
