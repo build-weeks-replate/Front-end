@@ -1,19 +1,20 @@
 import React from 'react';
 import './App.css';
 import { Container } from 'semantic-ui-react';
-import VolunteerSignUp from "./components/VolunteerSignUp";
-import Navigation from './components/Navigation';
-// import DonorSignUp from './components/DonorSignUp';
+import Routes from './components/Routes';
+import Header from './components/Header';
+import Sidebar from './components/Sidebar';
+// import Footer from './components/Footer';
 
 function App() {
   return (
     <div>
-      <Navigation />
+      <Sidebar />
+      <Header />
       <Container>
-        {/* <DonorSignUp /> */}
-        <VolunteerSignUp />
+        <Routes />
       </Container>
-
+      {/*<Footer />*/}
     </div>
   );
 }

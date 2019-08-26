@@ -1,6 +1,8 @@
 import React from 'react'
-import { Button, Form, Icon, Header } from 'semantic-ui-react'
+import { Button, Form, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
+import icon from '../images/foodPlate.svg';
+import { Link } from 'react-router-dom';
 
 const Circle = styled.div`
   background: #FBA01D;
@@ -28,6 +30,7 @@ const MainContent = styled.div`
   justify-content: center;
   align-items: center;
   color: #1F5C70;
+}
 `
 const LeftContent = styled.div`
   width: 35%;
@@ -38,11 +41,12 @@ const RightContent = styled.div`
   width: 60%;
 `
 
-const VolunteerSignUp = () => (
+const BusinessSignUp1 = () => {
+  return(
     <MainContent className="main">
       <LeftContent>
-        <Icon name='handshake' size="massive" />
-        <Header size='huge'>Volunteer Sign Up</Header>
+        <img src={icon} className="dishicon" alt="Dish Icon" />
+        <Header size='huge'>DONOR SIGN UP</Header>
         <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
       </LeftContent>
       <RightContent>
@@ -54,8 +58,8 @@ const VolunteerSignUp = () => (
             <StyledH1>Create Your Account</StyledH1>
           </Heading>
           <Form.Field>
-            <label>Volunteer Name</label>
-            <input type="text" name="volunteerName" placeholder='Volunteer Name' />
+            <label>Company Name</label>
+            <input type="text" name="companyName" placeholder='Company Name' />
           </Form.Field>
           <Form.Field>
             <label>Phone Number</label>
@@ -73,10 +77,47 @@ const VolunteerSignUp = () => (
             <label>Repeat Password</label>
             <input type="password" name="password" placeholder="Repeat Password" />
           </Form.Field>
+          <Link to="/business_part2"><Button type='submit'>Continue</Button></Link>
+        </Form>
+      </RightContent>
+    </MainContent>
+  )
+}
+
+const BusinessSignUp2 = () => {
+  return(
+    <MainContent className="main">
+      <LeftContent>
+        <img src={icon} className="dishicon" alt="Dish Icon" />
+        <Header size='huge'>DONOR SIGN UP</Header>
+        <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
+      </LeftContent>
+      <RightContent>
+        <Form>
+          <Heading>
+            <Circle>
+              <CircleNumber>2</CircleNumber>
+            </Circle>
+            <StyledH1>Your Business Location</StyledH1>
+          </Heading>
+          <Form.Field>
+            <label>Office Name</label>
+            <input type="text" name="officeName" placeholder='Office Name' />
+          </Form.Field>
+          <Form.Field>
+            <label>Office Address</label>
+            <input type="text" name="officeAddress" placeholder='Office Address' />
+          </Form.Field>
+          <Form.Field>
+            <label>Office Email (Optional)</label>
+            <input type="email" name="email" placeholder='Office Email' />
+          </Form.Field>
           <Button type='submit'>Sign&nbsp;Up</Button>
         </Form>
       </RightContent>
     </MainContent>
-)
+  )
+}
 
-export default VolunteerSignUp;
+
+export { BusinessSignUp1, BusinessSignUp2};
