@@ -42,7 +42,7 @@ const RightContent = styled.div`
 `
 
 const BusinessSignUp1 = () => {
-  return(
+  return (
     <MainContent>
       <LeftContent>
         <img src={icon} className="dishicon" alt="Dish Icon" />
@@ -85,7 +85,7 @@ const BusinessSignUp1 = () => {
 }
 
 const BusinessSignUp2 = () => {
-  return(
+  return (
     <MainContent>
       <LeftContent>
         <img src={icon} className="dishicon" alt="Dish Icon" />
@@ -120,4 +120,4 @@ const BusinessSignUp2 = () => {
 }
 
 
-export { BusinessSignUp1, BusinessSignUp2};
+export { BusinessSignUp1, BusinessSignUp2 };

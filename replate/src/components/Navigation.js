@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '../images/replate-white.svg';
-import { Link } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 const Header = styled.header`
   top: 0;
   width: 100%;
