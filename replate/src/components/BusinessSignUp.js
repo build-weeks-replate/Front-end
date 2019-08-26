@@ -30,7 +30,7 @@ const MainContent = styled.div`
   justify-content: center;
   align-items: center;
   color: #1F5C70;
-}
+
 `
 const LeftContent = styled.div`
   width: 35%;
@@ -39,6 +39,13 @@ const LeftContent = styled.div`
 `
 const RightContent = styled.div`
   width: 60%;
+`
+const BackButton = styled.div`
+  display: flex;
+  justify-content: center;
+  // border: 2px solid black;
+  margin: 1rem 0;
+  width: 100%; 
 `
 
 const BusinessSignUp1 = () => {
@@ -78,6 +85,9 @@ const BusinessSignUp1 = () => {
             <input type="password" name="password" placeholder="Repeat Password" />
           </Form.Field>
           <Link to="/business_part2"><Button type='submit'>Continue</Button></Link>
+          <BackButton>
+            <Link to="/signup"><Button type="submit">Back</Button></Link>
+          </BackButton>
         </Form>
       </RightContent>
     </MainContent>
@@ -113,6 +123,9 @@ const BusinessSignUp2 = () => {
             <input type="email" name="email" placeholder='Office Email' />
           </Form.Field>
           <Button type='submit'>Sign&nbsp;Up</Button>
+          <BackButton>
+            <Link to="/business_part1"><Button type="submit">Back</Button></Link>
+          </BackButton>
         </Form>
       </RightContent>
     </MainContent>

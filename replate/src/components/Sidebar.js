@@ -5,7 +5,7 @@ import { Button } from 'semantic-ui-react';
 import logo from '../images/replate-rgb.svg';
 
 const Sidebar = (props) => {
-  return(
+  return (
     <Menu right>
       <Link to=""><img src={logo} className="logo-sidebar" alt="Replate Logo RGB" /></Link>
       <Link to="/signup" className="menu-item"><Button type='submit'>Sign&nbsp;Up</Button></Link>

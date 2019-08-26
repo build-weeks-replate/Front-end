@@ -10,11 +10,8 @@ import 'semantic-ui-css/semantic.min.css'
 ReactDOM.render(
   <BrowserRouter>
     <App />
-  </BrowserRouter>, 
-<<<<<<< HEAD
-=======
-  
->>>>>>> 0eadf2a86f9955075c932ac8f506093cbb0ac5a7
+  </BrowserRouter>,
+
   document.getElementById('root')
 );
 
