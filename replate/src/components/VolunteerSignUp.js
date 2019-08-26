@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Form, Icon, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
-import icon from '../images/foodPlate.svg';
 
 const Circle = styled.div`
   background: #FBA01C;
@@ -43,7 +42,7 @@ const RightContent = styled.div`
 const VolunteerSignUp = () => (
     <MainContent>
         <LeftContent>
-            <Icon name='handshake outline' size="massive" />
+            <Icon name='handshake' size="massive" />
             <Header size='huge'>Volunteer Sign Up</Header>
             <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
         </LeftContent>
@@ -51,13 +50,13 @@ const VolunteerSignUp = () => (
             <Form>
                 <Heading>
                     <Circle>
-                        <CircleNumber>2</CircleNumber>
+                        <CircleNumber>1</CircleNumber>
                     </Circle>
                     <StyledH1>Create Your Account</StyledH1>
                 </Heading>
                 <Form.Field>
                     <label>Volunteer Name</label>
-                    <input type="text" name="companyName" placeholder='Company Name' />
+                    <input type="text" name="volunteerName" placeholder='Volunteer Name' />
                 </Form.Field>
                 <Form.Field>
                     <label>Phone Number</label>
@@ -75,7 +74,7 @@ const VolunteerSignUp = () => (
                     <label>Repeat Password</label>
                     <input type="password" name="password" placeholder="Repeat Password" />
                 </Form.Field>
-                <Button type='submit'>Continue</Button>
+                <Button type='submit'>Submit</Button>
             </Form>
         </RightContent>
     </MainContent>
