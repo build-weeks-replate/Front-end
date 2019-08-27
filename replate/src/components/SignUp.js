@@ -1,8 +1,9 @@
 import React from 'react';
 import logo from '../images/replate-rgb.svg';
-import icon from '../images/foodPlate.svg';
+import foodPlate from '../images/foodPlate.svg';
+import handShake from '../images/hands-helping-solid@2x.png';
 import styled from 'styled-components';
-import { Button, Card, Icon } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const MainContent = styled.div`
@@ -20,14 +21,14 @@ const HomePage = () => {
       <Card.Group>
         <Card as={Link} to="/business_part1" className="card">
           <Card.Content>
-            <img src={icon} className="icon-home" alt="Dish Icon" />
+            <img src={foodPlate} className="icon-foodplate" alt="Dish Icon" />
             <Card.Header>I'M A BUSINESS</Card.Header>
             <Button type="Submit">I want to donate food</Button>
           </Card.Content>
         </Card>
         <Card as={Link} to="/volunteer" className="card">
           <Card.Content>
-            <Icon name='handshake' className="icon-handshake" size="massive" />
+            <img src={handShake} className="icon-handshake" alt="Hand Shaking Icon" />
             <Card.Header>I'M A VOLUNTEER</Card.Header>
             <Button type="submit">I want to receive donations</Button>
           </Card.Content>

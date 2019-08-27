@@ -1,13 +1,11 @@
 import React from 'react';
-import { Button, Form, Icon, Header, Card } from 'semantic-ui-react';
+import { Icon, Card } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const MainContent = styled.div`
   display: flex;
   color: #1F5C70;
   border: 2px solid yellow;
-
-
 `
 const StyledH1 = styled.h1`
   display: flex;
@@ -63,7 +61,7 @@ const BusinessDashboard = () => {
                 </Add>
             </MainContent>
             <BottomContent>
-              <h3> Pick Up Schedule </h3>
+              <h3>Pick Up Schedule</h3>
               <Add>
                   <Icon name = "plus circle" className = "plus-circle-link-icon" size = "big" />
                   <h4> Make your first donation</h4>

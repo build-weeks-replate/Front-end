@@ -38,7 +38,11 @@ i.icon.gift {
 }
 
 .dishicon {
-  width: 140px;
+  height: 140px;
+}
+
+.handshakeicon{
+  height: 140px;
 }
 
 div.ui.huge.header {
@@ -73,8 +77,12 @@ i.handshake.icon {
   width: 100%;
 }
 
-.icon-home {
-  width: 140px;
+.icon-foodplate {
+  height: 135px;
+  margin-bottom: 24px;
+}
+.icon-handshake {
+  height: 140px;
   margin-bottom: 19px;
 }
 

@@ -1,7 +1,8 @@
 import React from 'react'
-import { Button, Form, Icon, Header } from 'semantic-ui-react'
+import { Button, Form, Header } from 'semantic-ui-react'
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import handShake from '../images/hands-helping-solid@2x.png';
 
 const Circle = styled.div`
   background: #FBA01D;
@@ -49,7 +50,7 @@ const BackButton = styled.div`
 const VolunteerSignUp = () => (
     <MainContent className="main">
         <LeftContent>
-            <Icon name='handshake' size="massive" />
+            <img src={handShake} className="handshakeicon" alt="Hand Shaking Icon" />
             <Header size='huge'>Volunteer Sign Up</Header>
             <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
         </LeftContent>
