@@ -6,6 +6,10 @@
     "axios": "^0.19.0",
     "babel-preset-react-app": "^9.0.1",
     "formik": "^1.5.8",
+<<<<<<< HEAD
+=======
+    "formik-semantic-ui": "^0.10.0",
+>>>>>>> 54a12fd52b3f91935f452f6bb87004ff5b1b9304
     "react": "^16.9.0",
     "react-burger-menu": "^2.6.11",
     "react-dom": "^16.9.0",

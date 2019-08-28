@@ -1,80 +1,101 @@
 import React from 'react';
-import { Button, Form, Icon, Header, Card } from 'semantic-ui-react';
+import { Icon, Card } from 'semantic-ui-react';
 import styled from 'styled-components';
 
 const MainContent = styled.div`
   display: flex;
   color: #1F5C70;
-  border: 2px solid yellow;
-
-
 `
 const StyledH1 = styled.h1`
   display: flex;
   color: #1F5C70;
   font-size: 3rem; 
   justify-content: center;
-  border: 2px solid blue;
-`
-const DashboardCard = styled.div`
-  width: 100%;
-  text-align: center;
-  // margin-right: 10%;
 `
 const Add = styled.div `
-  border: 2px solid red;
   display: flex;
-  width: 30%;
   align-items: center;
-  justify-content: space-evenly;
-  
+  padding: 10px;
 `
 const BottomContent = styled.div `
-  border: 2px solid green;
   color: #1F5C70;
+  margin-top: 20px;
 `
 const Calendar = styled.div `
   color: #1F5C70;
   width: 100%
-  border: 2px solid paleturquoise;
+  margin-top: 20px;
+`
+const Heading = styled.h3`
+  background: #1F5C70;
+  border-bottom: 3px solid #FBA01D!important;
+  color: #FFF;
+  margin: 0;
+  padding: 10px;
+  width: 100%;
+`
+const Donation = styled.div`
   display: flex;
-  justify-content: center;
-
+  margin: 10px;
 `
 
 const BusinessDashboard = () => {
-    return (
-        <div>
-            <StyledH1>Donor Dashboard</StyledH1>
-            <MainContent className="main">
-                <Card>
-                    <DashboardCard>
-                        <Card.Content>
-                            <h3>Office Location</h3>
-                            <Icon name="building outline" className="icon-building-outline" size="huge" />
-                            <h4>Name</h4>
-                            <h4>Address</h4>
-                        </Card.Content>
-                    </DashboardCard>
-                </Card>
-                <Add>
-                  <Icon name = "plus circle" className = "plus-circle-link-icon" size = "big" />
-                  <h4> Add Another Location</h4>
-                </Add>
-            </MainContent>
-            <BottomContent>
-              <h3> Pick Up Schedule </h3>
-              <Add>
-                  <Icon name = "plus circle" className = "plus-circle-link-icon" size = "big" />
-                  <h4> Make your first donation</h4>
-              </Add>
-                <Calendar class ="calendar">
-                  <h3>Next Weeks Schedule</h3>
-                  <h5>Insert Calendar Here</h5>
-                </Calendar>
-            </BottomContent>
-        </div>
-    )
+  return (
+    <div>
+      <StyledH1>Donor Dashboard</StyledH1>
+      <Heading><Icon name="building" />Office Location</Heading>
+      <MainContent className="main">
+        <Card className="dashboard-office-location">
+          <Card.Content>
+            <Icon name="building outline" className="icon-building-outline" size="huge" />
+            <h4>Name</h4>
+            <h4>Address</h4>
+          </Card.Content>
+        </Card>
+        <Card className="dashboard-office-location">
+          <Card.Content>
+            <Add>
+              <Icon name="plus circle" className="plus-circle-link-icon" size="big" />
+              <h4 className="add-location-text">Add Another Location</h4>
+            </Add>
+          </Card.Content>
+        </Card>
+      </MainContent>
+      <BottomContent>
+        <Heading><Icon name="truck" />  Pick Up Schedule</Heading>
+        <Add>
+          <Icon name="plus circle" className="plus-circle-link-icon" size="big" />
+          <h4 className="first-donation-text">Make your first donation</h4>
+        </Add>
+        <Donation>
+          <Card className="donation">
+            <Card.Content>
+              <div>Donation example</div>
+            </Card.Content>
+          </Card>
+          <Card className="donation">
+            <Card.Content>
+              <div>Donation example</div>
+            </Card.Content>
+          </Card>
+          <Card className="donation">
+            <Card.Content>
+              <div>Donation example</div>
+            </Card.Content>
+          </Card>
+          <Card className="donation">
+            <Card.Content>
+              <div>Donation example</div>
+            </Card.Content>
+          </Card>
+        </Donation>
+        <Calendar class="calendar">
+          <Heading><Icon name="calendar alternate" /> Next Week's Schedule</Heading>
+          <div className="calendar-placeholder">Calendar will go here</div>
+        </Calendar>
+      </BottomContent>
+    </div>
+  )
 }
 
 export default BusinessDashboard; 

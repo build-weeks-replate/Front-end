@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from 'react'
-import { Button, Header } from 'semantic-ui-react'
+import React, { useState, useEffect } from 'react';
+import { Field, withFormik, Form } from 'formik';
+import { Button, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { withFormik, Form, Field } from "formik";
-import axios from "axios";
-import * as Yup from "yup";
-// import handShake from '../images/hands-helping-solid@2x.png';
+import handShake from '../images/hands-helping-solid@2x.png';
+import axios from 'axios';
+import * as Yup from 'yup';
 
 const Circle = styled.div`
   background: #FBA01D;
@@ -22,6 +22,7 @@ const CircleNumber = styled.h1`
 `
 const Heading = styled.div`
   display: flex;
+  margin-bottom: 8px;
 `
 const StyledH1 = styled.h1`
   position: relative;
@@ -50,66 +51,20 @@ const BackButton = styled.div`
   width: 100%; 
 `
 
-/*const VolunteerSignUp = () => (
-  <MainContent className="main">
-    <LeftContent>
-      <Icon name='handshake' size="massive" />
-      <Header size='huge'>Volunteer Sign Up</Header>
-      <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
-    </LeftContent>
-
-    { <RightContent>
-      <Form>
-        <Heading>
-          <Circle>
-            <CircleNumber>1</CircleNumber>
-          </Circle>
-          <StyledH1>Create Your Account</StyledH1>
-        </Heading>
-
-        <Form.Field>
-          <label>Volunteer Name</label>
-          <input type="text" name="volunteerName" placeholder='Volunteer Name' />
-        </Form.Field>
-        <Form.Field>
-          <label>Phone Number</label>
-          <input type="number" name="phoneNumber" placeholder='Phone Number' />
-        </Form.Field>
-        <Form.Field>
-          <label>Email</label>
-          <input type="email" name="email" placeholder='Email' />
-        </Form.Field>
-        <Form.Field>
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Password" />
-        </Form.Field>
-        <Form.Field>
-          <label>Repeat Password</label>
-          <input type="password" name="password" placeholder="Repeat Password" />
-        </Form.Field>
-        <Link to="/business_dashboard"><Button type='submit'>Sign&nbsp;Up</Button></Link>
-        <BackButton>
-          <Link to="/signup"><Button type="submit">Back</Button></Link>
-        </BackButton>
-      </Form>
-    </RightContent> }
-  </MainContent >
-)*/
-
-
-
 const VolunteerSignUp = ({ errors, touched, values, status }) => {
   const [volunteers, setVolunteers] = useState([]);
   console.log(volunteers);
+
   useEffect(() => {
     if (status) {
       setVolunteers([...volunteers, status]);
     }
   }, [status]);
+
   return (
     <MainContent>
       <LeftContent>
-        {/* <img src={handShake} className="handshakeicon" alt="Hand Shaking Icon" /> */}
+        <img src={handShake} className="handshakeicon" alt="Hand Shaking Icon" />
         <Header size='huge'>Volunteer Sign Up</Header>
         <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
       </LeftContent>
@@ -194,6 +149,7 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
     </MainContent>
   );
 };
+
 const formikHOC = withFormik({
   mapPropsToValues({ volunteerName, volunteerPhone, volunteerEmail, volunteerPassword, volunteerRepeatPassword }) {
     return {
@@ -223,4 +179,5 @@ const formikHOC = withFormik({
   }
 });
 const VolunteerSignUpWithFormik = formikHOC(VolunteerSignUp);
+
 export default VolunteerSignUpWithFormik;

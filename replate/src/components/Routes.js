@@ -12,10 +12,10 @@ const Routes = () => {
       <Route path="/business_part1" component={BusinessSignUp1} />
       <Route path="/business_part2" component={BusinessSignUp2} />
       <Route path="/business_dashboard" component={BusinessDashboard} />
-      <Route path="/volunteer" component={FormikSignupForm} />
+      <Route path="/volunteer" component={VolunteerSignUp} />
+      <Route path="/dashboard" component={BusinessDashboard} />
     </div>
   )
 }
 
 export default Routes;
-
