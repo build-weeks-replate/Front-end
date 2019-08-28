@@ -12,12 +12,17 @@ const MainContent = styled.div`
   justify-content: center;
   align-items: center;
 `
+const Heading = styled.h3`
+  color: #1F5C70;
+  margin-bottom: 30px !important;
+  text-align: center;
+`
 
 const HomePage = () => {
   return (
     <MainContent>
       <img src={logo} className="logoRGB" alt="Replate Logo RGB" />
-      <h3>HELP END HUNGER IN YOUR COMMUNITY. SIGN UP FOR REPLATE TO JOIN THE FIGHT.</h3>
+      <Heading>HELP END HUNGER IN YOUR COMMUNITY. SIGN UP FOR REPLATE TO JOIN THE FIGHT.</Heading>
       <Card.Group>
         <Card as={Link} to="/business_part1" className="card">
           <Card.Content>

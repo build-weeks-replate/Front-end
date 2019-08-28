@@ -1,8 +1,11 @@
-import React from 'react'
-import { Button, Form, Header } from 'semantic-ui-react'
+import React, { useState, useEffect } from 'react';
+import { Field, withFormik, Form } from 'formik';
+import { Button, Header } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import handShake from '../images/hands-helping-solid@2x.png';
+import axios from 'axios';
+import * as Yup from 'yup';
 
 const Circle = styled.div`
   background: #FBA01D;
@@ -19,6 +22,7 @@ const CircleNumber = styled.h1`
 `
 const Heading = styled.div`
   display: flex;
+  margin-bottom: 8px;
 `
 const StyledH1 = styled.h1`
   position: relative;
@@ -47,48 +51,133 @@ const BackButton = styled.div`
   width: 100%; 
 `
 
-const VolunteerSignUp = () => (
-    <MainContent className="main">
-        <LeftContent>
-            <img src={handShake} className="handshakeicon" alt="Hand Shaking Icon" />
-            <Header size='huge'>Volunteer Sign Up</Header>
-            <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
-        </LeftContent>
-        <RightContent>
-            <Form>
-                <Heading>
-                    <Circle>
-                        <CircleNumber>1</CircleNumber>
-                    </Circle>
-                    <StyledH1>Create Your Account</StyledH1>
-                </Heading>
-                <Form.Field>
-                    <label>Volunteer Name</label>
-                    <input type="text" name="volunteerName" placeholder='Volunteer Name' />
-                </Form.Field>
-                <Form.Field>
-                    <label>Phone Number</label>
-                    <input type="number" name="phoneNumber" placeholder='Phone Number' />
-                </Form.Field>
-                <Form.Field>
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder='Email' />
-                </Form.Field>
-                <Form.Field>
-                    <label>Password</label>
-                    <input type="password" name="password" placeholder="Password" />
-                </Form.Field>
-                <Form.Field>
-                    <label>Repeat Password</label>
-                    <input type="password" name="password" placeholder="Repeat Password" />
-                </Form.Field>
-                <Link to="/business_dashboard"><Button type='submit'>Sign&nbsp;Up</Button></Link>
-                <BackButton>
-                    <Link to="/signup"><Button type="submit">Back</Button></Link>
-                </BackButton>
-            </Form>
-        </RightContent>
-    </MainContent>
-)
+const VolunteerSignUp = ({ errors, touched, values, status }) => {
+  const [volunteers, setVolunteers] = useState([]);
+  console.log(volunteers);
 
-export default VolunteerSignUp;
+  useEffect(() => {
+    if (status) {
+      setVolunteers([...volunteers, status]);
+    }
+  }, [status]);
+
+  return (
+    <MainContent>
+      <LeftContent>
+        <img src={handShake} className="handshakeicon" alt="Hand Shaking Icon" />
+        <Header size='huge'>Volunteer Sign Up</Header>
+        <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
+      </LeftContent>
+      <RightContent>
+        <Form>
+          <Heading>
+            <Circle>
+              <CircleNumber>1</CircleNumber>
+            </Circle>
+            <StyledH1>Create Your Account</StyledH1>
+          </Heading>
+          <label>
+            Volunteer Name
+            <Field
+              component="input"
+              type="text"
+              name="volunteerName"
+              placeholder="Volunteer Name"
+            />
+          </label>
+          {touched.volunteerName && errors.volunteerName && (
+            <p className="error">{errors.volunteerName}</p>
+          )}
+          <label>
+            Phone Number
+            <Field
+              component="input"
+              type="tel"
+              name="volunteerPhone"
+              placeholder="Phone Number"
+            />
+          </label>
+          {touched.volunteerPhone && errors.volunteerPhone && (
+            <p className="error">{errors.volunteerPhone}</p>
+          )}
+          <label>
+            Email
+            <Field
+              component="input"
+              type="email"
+              name="volunteerEmail"
+              placeholder="Email"
+            />
+          </label>
+          {touched.volunteerEmail && errors.volunteerEmail && (
+            <p className="error">{errors.volunteerEmail}</p>
+          )}
+          <label>
+            Password
+            <Field
+              component="input"
+              type="password"
+              name="volunteerPassword"
+              placeholder="Password"
+            />
+          </label>
+          {touched.volunteerPassword && errors.volunteerPassword && (
+            <p className="error">{errors.volunteerPassword}</p>
+          )}
+          <label>
+            Repeat Password
+            <Field
+              component="input"
+              type="password"
+              name="volunteerRepeatPassword"
+              placeholder="Repeat Password"
+            />
+          </label>
+          {touched.volunteerRepeatPassword && errors.volunteerRepeatPassword && (
+            <p className="error">{errors.volunteerRepeatPassword}</p>
+          )}
+          <Button>Submit!</Button>
+          <BackButton>
+            <Link to="/signup"><Button type="submit">Back</Button></Link>
+          </BackButton>
+          {volunteers.map(volunteer => (
+            <p key={volunteer.id}>{volunteer.volunteerName}</p>
+            ))
+          }
+        </Form>
+      </RightContent>
+    </MainContent>
+  );
+};
+
+const formikHOC = withFormik({
+  mapPropsToValues({ volunteerName, volunteerPhone, volunteerEmail, volunteerPassword, volunteerRepeatPassword }) {
+    return {
+      volunteerName: volunteerName || "",
+      volunteerPhone: volunteerPhone || "",
+      volunteerEmail: volunteerEmail || "",
+      volunteerPassword: volunteerPassword || "",
+      volunteerRepeatPassword: volunteerRepeatPassword || ""
+    };
+  },
+  validationSchema: Yup.object().shape({
+    volunteerName: Yup.string().required("Please enter your name."),
+    volunteerPhone: Yup.number().required("Please enter your phone number."),
+    volunteerEmail: Yup.string().required("Please enter a valid email address."),
+    volunteerPassword: Yup.string().required("Please enter a password"),
+    volunteerRepeatPassword: Yup.string().required("Passwords must match")
+  }),
+  handleSubmit(values, { setStatus, resetForm }) {
+    axios
+      .post("https://reqres.in/api/users", values)
+      .then(res => {
+        console.log("handleSubmit: then: res: ", res);
+        setStatus(res.data);
+        resetForm();
+      })
+      .catch(err => console.error("handleSubmit: catch: err: ", err));
+  }
+});
+const VolunteerSignUpWithFormik = formikHOC(VolunteerSignUp);
+
+export default VolunteerSignUpWithFormik;

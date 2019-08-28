@@ -34,7 +34,7 @@ const Header = () => {
     <Heading>
       <Nav>
         <Link to=""><img src={logo} className="logo" alt="Replate Logo" /></Link>
-        <NavMenu>
+        <NavMenu className="nav">
           <Link to="">Home</Link>
           <Link to="">About</Link>
           <Link to="/signup">Sign&nbsp;Up</Link>
