@@ -38,7 +38,11 @@ i.icon.gift {
 }
 
 .dishicon {
-  width: 140px;
+  height: 140px;
+}
+
+.handshakeicon{
+  height: 140px;
 }
 
 div.ui.huge.header {
@@ -62,24 +66,21 @@ div.ui.huge.header {
   margin: 20px 0;
 }
 
-h3 {
-  color: #1F5C70;
-  margin-bottom: 30px !important;
-  text-align: center;
-}
-
 i.handshake.icon {
   color: #1F5C70;
   width: 100%;
 }
 
-.icon-home {
-  width: 140px;
+.icon-foodplate {
+  height: 135px;
+  margin-bottom: 24px;
+}
+.icon-handshake {
+  height: 140px;
   margin-bottom: 19px;
 }
 
 .plus-circle-link-icon {
-  border: 1px black solid;
   display: flex;
   justify-content: center;
   color: #1F5C70;
@@ -96,6 +97,7 @@ h5 {
 .ui.card, .ui.cards>.card {
   border: 3px solid #1F5C70 !important;
   box-sizing: border-box;
+  margin: 0 10px!important;
 }
 
 .ui.card>.content>.header:not(.ui), .ui.cards>.card>.content>.header:not(.ui) {
@@ -113,6 +115,21 @@ h5 {
 
 .ui.card, .ui.cards>.dashboard {
   display: flex;
+  margin: 0 !important;
+  border: none !important;
+}
+
+.ui.card.donation {
+  margin-right: 20px !important;
+  width: 25%;
+}
+
+.ui.card.donation:last-child {
+  margin-right: 0px !important;
+}
+
+div.ui.card.dashboard-office-location{
+  box-shadow: none !important;
 }
 
 i.icon.th.list:before {
@@ -196,13 +213,69 @@ i.icon.th.list:before {
   right: 0;
 }
 
+.calendar-placeholder{
+  background: #E7E7E7;
+  padding: 10px;
+  height: 200px;
+}
 a.bm-item.logo-sidebar {
   width: 161px;
   margin: 0 auto;
 }
+.add-location-text, .first-donation-text{
+  display: inline;
+  margin: 0px;
+}
+.building.icon::before, .truck.icon::before, .calendar.icon::before{
+  color: #FBA01D;
+}
 
+/* Form */
+input{
+  margin: 7px 0 14px !important;
+  flex: 1 0 auto;
+  outline: none;
+  text-align: left;
+  line-height: 1.21428571em;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  padding: 0.67857143em 1em;
+  background: #FFFFFF;
+  border: 1px solid #1F5C70;
+  color: #000;
+  border-radius: 0.28571429rem;
+  width: 100%;
+}
+
+label{
+  color: #000;
+  font-weight: bold;
+}
+
+input::placeholder{
+  color: rgba(191, 191, 191, 0.87);
+}
+
+input:focus{
+  border: 1px solid #FBA01D;
+}
+
+input:focus::placeholder{
+  color: rgba(115, 115, 115, 0.87);
+}
+
+p.error{
+  color: red;
+  margin-top: 0px;
+}
+
+button.ui.button{
+  margin-top: 10px !important;
+}
+
+
+/* Responsiveness */
 @media only screen and (max-width: 700px) {
-  .kQzXXJ a {
+  .nav {
     display: none !important;
   }
   nav.sc-jzJRlG.lfdADk {
@@ -231,7 +304,7 @@ a.bm-item.logo-sidebar {
 }
 
 @media only screen and (min-width: 701px) and (max-width: 1050px) {
-  .kQzXXJ a {
+  .nav a {
     display: none !important;
   }
   nav.sc-jzJRlG.lfdADk {

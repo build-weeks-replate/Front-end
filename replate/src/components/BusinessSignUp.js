@@ -30,7 +30,6 @@ const MainContent = styled.div`
   justify-content: center;
   align-items: center;
   color: #1F5C70;
-
 `
 const LeftContent = styled.div`
   width: 35%;
@@ -43,11 +42,9 @@ const RightContent = styled.div`
 const BackButton = styled.div`
   display: flex;
   justify-content: center;
-  // border: 2px solid black;
   margin: 1rem 0;
   width: 100%; 
 `
-
 const BusinessSignUp1 = () => {
   return (
     <MainContent className="main">
