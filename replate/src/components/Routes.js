@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import SignUp from './SignUp';
 import { BusinessSignUp1, BusinessSignUp2 } from './BusinessSignUp';
-import FormikSignupForm from './VolunteerSignUp';
+import VolunteerSignUp from './VolunteerSignUp';
 import BusinessDashboard from "./BusinessDashboard";
 
 const Routes = () => {

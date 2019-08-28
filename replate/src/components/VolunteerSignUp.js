@@ -81,48 +81,72 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
             <Field
               component="input"
               type="text"
-              name="volunteerName"
-              placeholder="Volunteer Name"
+              name="username"
+              placeholder="Name"
             />
           </label>
-          {touched.volunteerName && errors.volunteerName && (
-            <p className="error">{errors.volunteerName}</p>
+          {touched.username && errors.username && (
+            <p className="error">{errors.username}</p>
           )}
           <label>
             Phone Number
             <Field
               component="input"
               type="tel"
-              name="volunteerPhone"
+              name="phone"
               placeholder="Phone Number"
             />
           </label>
-          {touched.volunteerPhone && errors.volunteerPhone && (
-            <p className="error">{errors.volunteerPhone}</p>
+          {touched.phone && errors.phone && (
+            <p className="error">{errors.phone}</p>
+          )}
+          <label>
+            Organization Name
+            <Field
+              component="input"
+              type="text"
+              name="organization_name"
+              placeholder="Organization Name"
+            />
+          </label>
+          {touched.organization_name && errors.organization_name && (
+            <p className="error">{errors.organization_name}</p>
+          )}
+          <label>
+            Volunteer Address
+            <Field
+              component="input"
+              type="text"
+              name="address"
+              placeholder="Address"
+            />
+          </label>
+          {touched.address && errors.address && (
+            <p className="error">{errors.username}</p>
           )}
           <label>
             Email
             <Field
               component="input"
               type="email"
-              name="volunteerEmail"
+              name="email"
               placeholder="Email"
             />
           </label>
-          {touched.volunteerEmail && errors.volunteerEmail && (
-            <p className="error">{errors.volunteerEmail}</p>
+          {touched.email && errors.email && (
+            <p className="error">{errors.email}</p>
           )}
           <label>
             Password
             <Field
               component="input"
               type="password"
-              name="volunteerPassword"
+              name="password"
               placeholder="Password"
             />
           </label>
-          {touched.volunteerPassword && errors.volunteerPassword && (
-            <p className="error">{errors.volunteerPassword}</p>
+          {touched.password && errors.password && (
+            <p className="error">{errors.password}</p>
           )}
           <label>
             Repeat Password
@@ -136,12 +160,12 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
           {touched.volunteerRepeatPassword && errors.volunteerRepeatPassword && (
             <p className="error">{errors.volunteerRepeatPassword}</p>
           )}
-          <Button>Submit!</Button>
+          <Button type="submit">Submit!</Button>
           <BackButton>
             <Link to="/signup"><Button type="submit">Back</Button></Link>
           </BackButton>
-          {volunteers.map(volunteer => (
-            <p key={volunteer.id}>{volunteer.volunteerName}</p>
+          {volunteers.map((volunteer) => (
+            <p key={volunteer.id}>{volunteer.username}</p>
           ))
           }
         </Form>
@@ -151,25 +175,41 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
 };
 
 const formikHOC = withFormik({
-  mapPropsToValues({ volunteerName, volunteerPhone, volunteerEmail, volunteerPassword, volunteerRepeatPassword }) {
+  mapPropsToValues({ username, phone, organization_name, email, password, volunteerRepeatPassword, address }) {
     return {
-      volunteerName: volunteerName || "",
-      volunteerPhone: volunteerPhone || "",
-      volunteerEmail: volunteerEmail || "",
-      volunteerPassword: volunteerPassword || "",
-      volunteerRepeatPassword: volunteerRepeatPassword || ""
+      username: username || "",
+      phone: phone || "",
+      email: email || "",
+      password: password || "",
+      volunteerRepeatPassword: volunteerRepeatPassword || "",
+      organization_name: organization_name || "",
+      address: address || "",
     };
   },
   validationSchema: Yup.object().shape({
-    volunteerName: Yup.string().required("Please enter your name."),
-    volunteerPhone: Yup.number().required("Please enter your phone number."),
-    volunteerEmail: Yup.string().required("Please enter a valid email address."),
-    volunteerPassword: Yup.string().required("Please enter a password"),
-    volunteerRepeatPassword: Yup.string().required("Passwords must match")
+    username: Yup.string().required("Please enter your name."),
+    phone: Yup.number().required("Please enter your phone number."),
+    email: Yup.string().required("Please enter a valid email address."),
+    password: Yup.string().required("Please enter a password"),
+    volunteerRepeatPassword: Yup.string().required("Passwords must match"),
+    address: Yup.string().required("Please enter your address.")
   }),
   handleSubmit(values, { setStatus, resetForm }) {
+    values.phone = parseInt(values.phone)
+
+    const user = {
+      username: values.username,
+      password: values.password,
+      organization_name: values.organization_name,
+      address: values.address,
+      email: values.email,
+      password: values.password,
+      phone: values.phone,
+      address: values.address
+    }
+    console.log(values)
     axios
-      .post("https://reqres.in/api/users", values)
+      .post("https://bw-replate.herokuapp.com/api/auth/volunteer/register", user)
       .then(res => {
         console.log("handleSubmit: then: res: ", res);
         setStatus(res.data);
