@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
-import { Form, Button } from 'semantic-ui-react';
+import { Form, Button, Header } from 'semantic-ui-react';
+import styled from 'styled-components';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
+const MainContent = styled.div`
+  width: 60%;
+  margin: 0 auto;
+`
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const LoginLink = styled.div`
+  text-align: right;
+  margin-top: 10px;
+`
 
 const VolunteerLogin = (props) => {
     const axiosAuth = () => {
@@ -33,20 +47,26 @@ const VolunteerLogin = (props) => {
         login(userCreds);
     }
     return (
-        <div>
-            <Link to="/dashboard">Dashboard</Link>
-            <Form onSubmit={handleSubmit}>
-                <Form.Field>
-                    <label>Username</label>
-                    <input placeholder="Username" type="text" name="username" value={userCreds.username} onChange={handleChange} />
-                </Form.Field>
-                <Form.Field>
-                    <label>Password</label>
-                    <input placeholder="Password" type="password" name="password" value={userCreds.password} onChange={handleChange} />
-                </Form.Field>
-                <Button type="submit">Log&nbsp;In</Button>
-            </Form>
-        </div>
+      <MainContent>
+        <Header size='huge'>Volunteer Log In</Header>
+        <Form onSubmit={handleSubmit}>
+          <Form.Field>
+            <label>Username</label>
+            <input placeholder="Username" type="text" name="username" value={userCreds.username} onChange={handleChange} />
+          </Form.Field>
+          <Form.Field>
+            <label>Password</label>
+            <input placeholder="Password" type="password" name="password" value={userCreds.password} onChange={handleChange} />
+          </Form.Field>
+          <Buttons>
+            <Link to="/volunteer_signup"><Button className="btnBack">Back</Button></Link>
+            <Button type="submit">Log&nbsp;In</Button>
+          </Buttons>
+          <LoginLink>
+            <p>Don't have a volunteer account? <Link to="/volunteer_signup">Sign Up</Link></p>
+          </LoginLink>
+        </Form>
+      </MainContent>
     );
 }
 

@@ -42,7 +42,7 @@ const Donation = styled.div`
 const BusinessDashboard = (props) => {
   return (
     <div>
-      <StyledH1>Donor Dashboard</StyledH1>
+      <StyledH1>Business Dashboard</StyledH1>
       <Heading><Icon name="building" />Office Location</Heading>
       <MainContent className="main">
         <Card className="dashboard-office-location">

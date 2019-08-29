@@ -3,7 +3,7 @@ import { Field, withFormik, Form } from 'formik';
 import { Button, Header, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import handShake from '../../images/hands-helping-solid@2x.png';
+import icon from '../../images/foodPlate.svg';
 import axios from 'axios';
 import * as Yup from 'yup';
 
@@ -30,12 +30,13 @@ const LeftContent = styled.div`
 const RightContent = styled.div`
   width: 60%;
 `
-const BackButton = styled.div`
+const LoginLink = styled.div`
+  text-align: right;
+  margin-top: 10px;
+`
+const Buttons = styled.div`
   display: flex;
-  justify-content: center;
-  // border: 2px solid black;
-  margin: 1rem 0;
-  width: 100%; 
+  justify-content: space-between;
 `
 
 const BusinessSignUp = ({ errors, touched, values, status }) => {
@@ -51,14 +52,14 @@ const BusinessSignUp = ({ errors, touched, values, status }) => {
   return (
     <MainContent>
       <LeftContent>
-        <img src={handShake} className="handshakeicon" alt="Hand Shaking Icon" />
+        <img src={icon} className="dishicon" alt="Dish Icon" />
         <Header size='huge'>Business Sign Up</Header>
         <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
       </LeftContent>
       <RightContent>
         <Form>
           <Heading>
-            <Icon name="user circle" />
+            <Icon className="user-icon" name="user" size="huge" />
             <StyledH1>Create Your Business Account</StyledH1>
           </Heading>
           <label>
@@ -107,7 +108,7 @@ const BusinessSignUp = ({ errors, touched, values, status }) => {
             />
           </label>
           {touched.address && errors.address && (
-            <p className="error">{errors.username}</p>
+            <p className="error">{errors.address}</p>
           )}
           <label>
             Email
@@ -145,14 +146,13 @@ const BusinessSignUp = ({ errors, touched, values, status }) => {
           {touched.businessRepeatPassword && errors.businessRepeatPassword && (
             <p className="error">{errors.businessRepeatPassword}</p>
           )}
-          <Button type="submit">Submit!</Button>
-          <BackButton>
-            <Link to="/signup"><Button type="submit">Back</Button></Link>
-          </BackButton>
-          {businesss.map((business) => (
-            <p key={business.id}>{business.username}</p>
-          ))
-          }
+          <Buttons>
+            <Link to="/signup"><Button className="btnBack">Back</Button></Link>
+            <Button type="submit">Sign&nbsp;Up</Button>
+          </Buttons>
+          <LoginLink>
+            <p>Already have a business account? <Link to="/business_login">Login</Link></p>
+          </LoginLink>
         </Form>
       </RightContent>
     </MainContent>
@@ -186,7 +186,6 @@ const formikHOC = withFormik({
       username: values.username,
       password: values.password,
       organization_name: values.organization_name,
-      address: values.address,
       email: values.email,
       password: values.password,
       phone: values.phone,
