@@ -24,7 +24,7 @@ const HomePage = () => {
       <img src={logo} className="logoRGB" alt="Replate Logo RGB" />
       <Heading>HELP END HUNGER IN YOUR COMMUNITY. SIGN UP FOR REPLATE TO JOIN THE FIGHT.</Heading>
       <Card.Group>
-        <Card as={Link} to="/business_part1" className="card">
+        <Card as={Link} to="/business_signUp" className="card">
           <Card.Content>
             <img src={foodPlate} className="icon-foodplate" alt="Dish Icon" />
             <Card.Header>I'M A BUSINESS</Card.Header>

@@ -1,17 +1,17 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import SignUp from './SignUp';
-import { BusinessSignUp1, BusinessSignUp2 } from './BusinessSignUp';
+import BusinessSignUp from './BusinessSignUp';
 import VolunteerSignUp from './VolunteerSignUp';
 import BusinessDashboard from "./BusinessDashboard";
 import VolunteerLogin from "./VolunteerLogin";
-
+import BusinessLogin from "./BusinessLogin";
 const Routes = () => {
   return (
     <div>
       <Route path="/signup" component={SignUp} />
-      <Route path="/business_part1" component={BusinessSignUp1} />
-      <Route path="/business_part2" component={BusinessSignUp2} />
+      <Route path="/business_signUp" component={BusinessSignUp} />
+      <Route path="/BusinessLogin" component={BusinessLogin} />
       <Route path="/business_dashboard" component={BusinessDashboard} />
       <Route path="/volunteer" component={VolunteerSignUp} />
       <Route path="/dashboard" component={BusinessDashboard} />
@@ -21,3 +21,4 @@ const Routes = () => {
 }
 
 export default Routes;
+
