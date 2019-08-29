@@ -272,6 +272,18 @@ button.ui.button{
   margin-top: 10px !important;
 }
 
+.searchbar{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.results{
+  position: absolute !important;
+  top: 40px !important;
+  width: 100% !important;
+}
 
 /* Responsiveness */
 @media only screen and (max-width: 700px) {

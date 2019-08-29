@@ -39,7 +39,7 @@ const Donation = styled.div`
   margin: 10px;
 `
 
-const BusinessDashboard = () => {
+const BusinessDashboard = (props) => {
   return (
     <div>
       <StyledH1>Donor Dashboard</StyledH1>
@@ -48,7 +48,7 @@ const BusinessDashboard = () => {
         <Card className="dashboard-office-location">
           <Card.Content>
             <Icon name="building outline" className="icon-building-outline" size="huge" />
-            <h4>Name</h4>
+            <h4>{props.username}</h4>
             <h4>Address</h4>
           </Card.Content>
         </Card>

@@ -8,7 +8,7 @@ const VolunteerLogin = (props) => {
         axios.post(`https://bw-replate.herokuapp.com/api/auth/volunteer/login`, userCreds)
             .then(res => {
                 localStorage.setItem('token', res.data.token);
-                props.history.push("/dashboard");
+                props.history.push("/volunteer_dashboard");
             })
             .catch(err => {
                 console.log(err);
