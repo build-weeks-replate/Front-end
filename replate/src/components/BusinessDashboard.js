@@ -12,16 +12,16 @@ const StyledH1 = styled.h1`
   font-size: 3rem; 
   justify-content: center;
 `
-const Add = styled.div `
+const Add = styled.div`
   display: flex;
   align-items: center;
   padding: 10px;
 `
-const BottomContent = styled.div `
+const BottomContent = styled.div`
   color: #1F5C70;
   margin-top: 20px;
 `
-const Calendar = styled.div `
+const Calendar = styled.div`
   color: #1F5C70;
   width: 100%
   margin-top: 20px;
@@ -89,7 +89,7 @@ const BusinessDashboard = () => {
             </Card.Content>
           </Card>
         </Donation>
-        <Calendar class="calendar">
+        <Calendar className="calendar">
           <Heading><Icon name="calendar alternate" /> Next Week's Schedule</Heading>
           <div className="calendar-placeholder">Calendar will go here</div>
         </Calendar>

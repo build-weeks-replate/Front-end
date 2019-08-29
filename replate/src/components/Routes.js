@@ -4,6 +4,7 @@ import SignUp from './SignUp';
 import { BusinessSignUp1, BusinessSignUp2 } from './BusinessSignUp';
 import VolunteerSignUp from './VolunteerSignUp';
 import BusinessDashboard from "./BusinessDashboard";
+import VolunteerLogin from "./VolunteerLogin";
 
 const Routes = () => {
   return (
@@ -14,6 +15,7 @@ const Routes = () => {
       <Route path="/business_dashboard" component={BusinessDashboard} />
       <Route path="/volunteer" component={VolunteerSignUp} />
       <Route path="/dashboard" component={BusinessDashboard} />
+      <Route path="/VolunteerLogin" component={VolunteerLogin} />
     </div>
   )
 }
