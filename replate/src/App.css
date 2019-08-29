@@ -292,13 +292,6 @@ button.ui.button{
   margin-top: 10px !important;
 }
 
-.searchbar{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
 .results{
   position: absolute !important;
   top: 40px !important;
@@ -312,6 +305,27 @@ div.ui.huge.header{
   color: #1F5C70;
   text-align: center;
 }
+
+.modalBtn{
+  width: 20%!important;
+  display: flex!important;
+  justify-content: center;
+  align-items: center;
+}
+
+.ui button.btnDash{
+  width: 100%!important;
+}
+
+.logoutBtn{
+  width: 30%!important;
+  margin-bottom: 20px!important;
+}
+
+.divider{
+  width: 100% !important;
+}
+
 
 /* Responsiveness */
 @media only screen and (max-width: 700px) {

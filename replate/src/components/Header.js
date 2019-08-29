@@ -38,7 +38,6 @@ const Header = () => {
           <Link to="">Home</Link>
           <Link to="">About</Link>
           <Link to="/signup">Sign&nbsp;Up</Link>
-          <Link to="">Log In</Link>
         </NavMenu>
       </Nav>
     </Heading>
