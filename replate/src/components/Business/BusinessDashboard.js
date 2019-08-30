@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Icon, Card, Button, Modal, Form, Divider, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 import axios from 'axios';
+import axiosWithAuth from "../axiosWithAuth";
 
 const MainContent = styled.div`
   display: flex;
@@ -59,17 +60,24 @@ const BusinessDashboard = (props) => {
   const [newFood, setNewFood] = useState({
     user: "",
     foods: [],
-    newFood: {
-      name: "",
-      pickup_date: "",
-      time: "",
-      description: "",
-      is_claimed: 0,
-      volunteer_id: null
-    },
     visible: false,
     id: ""
   });
+  useEffect(() => {
+
+    axiosWithAuth().get("https://bw-replate.herokuapp.com/api/food/business")
+      .then(res => {
+        setNewFood({
+          ...newFood,
+          foods: res.data
+        })
+        console.log(res)
+
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }, [])
   const handleChange = e => {
     setNewFood({
       ...newFood,
@@ -77,12 +85,26 @@ const BusinessDashboard = (props) => {
     });
   }
   const handleSubmit = e => {
+    const food = {
+      name: newFood.name,
+      pickup_date: newFood.pickup_date,
+      time: newFood.time,
+      description: newFood.description,
+      is_claimed: 0,
+    }
+
     e.preventDefault();
-    register(newFood);
+    axiosWithAuth().post(
+      "https://bw-replate.herokuapp.com/api/food", food
+    )
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
-  const register = (food) => {
-    axiosAuth("register", food);
-  }
+
   return (
     <div>
       <Title>
@@ -121,58 +143,50 @@ const BusinessDashboard = (props) => {
               <Icon name="truck" size="big" />Schedule New Pickup
             </Modal.Header>
             <Form onSubmit={handleSubmit}>
-            <Modal.Content>
-              <Modal.Description>
-                <Form.Field className="modalForm">
-                  <label>Pickup Name</label>
-                  <input placeholder="Pickup Name" type="text" name="name" value={newFood.name} onChange={handleChange} />
-                </Form.Field>
+              <Modal.Content>
+                <Modal.Description>
                   <Form.Field className="modalForm">
-                  <label>Pickup Date</label>
-                  <input placeholder="Pickup Date" type="date" name="date" value={newFood.date} onChange={handleChange} />
-                </Form.Field>
+                    <label>Pickup Name</label>
+                    <input placeholder="Pickup Name" type="text" name="name" value={newFood.name} onChange={handleChange} />
+                  </Form.Field>
                   <Form.Field className="modalForm">
-                  <label>Pickup Time</label>
-                  <input placeholder="Pickup Time" type="time" name="time" value={newFood.time} onChange={handleChange} />
-                </Form.Field>
-                <Form.Field className="modalForm">
-                  <label>Claimed</label>
-                  <input placeholder="Is Claimed" type="checkbox" name="is_claimed" value={newFood.is_claimed} onChange={handleChange} />
-                </Form.Field>
-                <Form.Field className="modalForm">
-                  <label>Description</label>
-                  <input placeholder="Description" type="textarea" name="description" value={newFood.description} onChange={handleChange} />
-                </Form.Field>
-                <Divider className="divider" />
-                <div className="submitModalBtnContainer">
+                    <label>Pickup Date</label>
+                    <input placeholder="Pickup Date" type="date" name="pickup_date" value={newFood.date} onChange={handleChange} />
+                  </Form.Field>
+                  <Form.Field className="modalForm">
+                    <label>Pickup Time</label>
+                    <input placeholder="Pickup Time" type="time" name="time" value={newFood.time} onChange={handleChange} />
+                  </Form.Field>
+                  <Form.Field className="modalForm">
+                    <label>Claimed</label>
+                    <input placeholder="Is Claimed" type="checkbox" name="is_claimed" value={newFood.is_claimed} onChange={handleChange} />
+                  </Form.Field>
+                  <Form.Field className="modalForm">
+                    <label>Description</label>
+                    <input placeholder="Description" type="textarea" name="description" value={newFood.description} onChange={handleChange} />
+                  </Form.Field>
+                  <Divider className="divider" />
+                  <div className="submitModalBtnContainer">
                     <Button type="submit" className="submitModalBtn" icon><Icon name='check' />&nbsp;&nbsp;Submit</Button>
-                </div>
-              </Modal.Description>
-            </Modal.Content>
+                  </div>
+                </Modal.Description>
+              </Modal.Content>
             </Form>
           </Modal>
         </Add>
         <Donation>
-          <Card className="donation">
-            <Card.Content>
-              <div>Donation example</div>
-            </Card.Content>
-          </Card>
-          <Card className="donation">
-            <Card.Content>
-              <div>Donation example</div>
-            </Card.Content>
-          </Card>
-          <Card className="donation">
-            <Card.Content>
-              <div>Donation example</div>
-            </Card.Content>
-          </Card>
-          <Card className="donation">
-            <Card.Content>
-              <div>Donation example</div>
-            </Card.Content>
-          </Card>
+          {newFood.foods.map(food => {
+            return (
+              <Card className="donation">
+                <Card.Content>
+                  <div>
+                    <p>{food.name}</p>
+                    <p>{food.pickup_date}</p>
+                    <p>{food.time}</p>
+                  </div>
+                </Card.Content>
+              </Card>)
+          })}
         </Donation>
         <Calendar className="calendar">
           <Heading><Icon name="calendar alternate" /> Next Week's Schedule</Heading>
