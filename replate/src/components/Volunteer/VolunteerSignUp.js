@@ -68,7 +68,7 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
               component="input"
               type="text"
               name="username"
-              placeholder="Name"
+              placeholder="Volunteer Name"
             />
           </label>
           {touched.username && errors.username && (

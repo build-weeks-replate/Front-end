@@ -68,7 +68,7 @@ const BusinessSignUp = ({ errors, touched, values, status }) => {
               component="input"
               type="text"
               name="username"
-              placeholder="Name"
+              placeholder="Business Name"
             />
           </label>
           {touched.username && errors.username && (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Icon, Card, Button, Modal, Form, Divider } from 'semantic-ui-react';
+import { Icon, Card, Button, Modal, Form, Divider, Image } from 'semantic-ui-react';
 import styled from 'styled-components';
 import axios from 'axios';
 
@@ -57,11 +57,18 @@ const BusinessDashboard = (props) => {
       })
   }
   const [newFood, setNewFood] = useState({
-    name: "",
-    time: "",
-    description: "",
-    is_claimed: "",
-    pickup_date: ""
+    user: "",
+    foods: [],
+    newFood: {
+      name: "",
+      pickup_date: "",
+      time: "",
+      description: "",
+      is_claimed: 0,
+      volunteer_id: null
+    },
+    visible: false,
+    id: ""
   });
   const handleChange = e => {
     setNewFood({
@@ -71,10 +78,10 @@ const BusinessDashboard = (props) => {
   }
   const handleSubmit = e => {
     e.preventDefault();
-    create(newFood);
+    register(newFood);
   }
-  const create = (food) => {
-    axiosAuth("create", food);
+  const register = (food) => {
+    axiosAuth("register", food);
   }
   return (
     <div>
@@ -93,7 +100,7 @@ const BusinessDashboard = (props) => {
         <Card className="dashboard-office-location">
           <Card.Content>
             <Icon name="building outline" className="icon-building-outline" size="huge" />
-            <h4>Name</h4>
+            <h4>User</h4>
             <h4>Address</h4>
           </Card.Content>
         </Card>
@@ -109,33 +116,37 @@ const BusinessDashboard = (props) => {
       <BottomContent>
         <Heading><Icon name="truck" />Pick Up Schedule</Heading>
         <Add>
-          <Modal trigger={<Button className="modalBtn" icon><Icon name="plus" size="big" className="plus-icon" /><span className="modalBtnTxt">Make your first donation</span></Button>}>
-            <Modal.Header>Schedule New Pickup</Modal.Header>
-            <Form onSubmit={handleSubmit}><Modal.Content image>
-              <Icon name="truck" size="huge" />
+          <Modal trigger={<Button className="modalBtn" icon><Icon name="plus" size="large" />&nbsp;&nbsp;<span className="modalBtnTxt">Make your first donation</span></Button>}>
+            <Modal.Header className="modalHeader">
+              <Icon name="truck" size="big" />Schedule New Pickup
+            </Modal.Header>
+            <Form onSubmit={handleSubmit}>
+            <Modal.Content>
               <Modal.Description>
-                <Form.Field>
+                <Form.Field className="modalForm">
                   <label>Pickup Name</label>
                   <input placeholder="Pickup Name" type="text" name="name" value={newFood.name} onChange={handleChange} />
                 </Form.Field>
-                <Form.Field>
+                  <Form.Field className="modalForm">
                   <label>Pickup Date</label>
                   <input placeholder="Pickup Date" type="date" name="date" value={newFood.date} onChange={handleChange} />
                 </Form.Field>
-                <Form.Field>
+                  <Form.Field className="modalForm">
                   <label>Pickup Time</label>
                   <input placeholder="Pickup Time" type="time" name="time" value={newFood.time} onChange={handleChange} />
                 </Form.Field>
-                <Form.Field>
-                  <label>Is Claimed</label>
+                <Form.Field className="modalForm">
+                  <label>Claimed</label>
                   <input placeholder="Is Claimed" type="checkbox" name="is_claimed" value={newFood.is_claimed} onChange={handleChange} />
                 </Form.Field>
-                <Form.Field>
+                <Form.Field className="modalForm">
                   <label>Description</label>
                   <input placeholder="Description" type="textarea" name="description" value={newFood.description} onChange={handleChange} />
                 </Form.Field>
                 <Divider className="divider" />
-                <Button type="submit">Submit</Button>
+                <div className="submitModalBtnContainer">
+                    <Button type="submit" className="submitModalBtn" icon><Icon name='check' />&nbsp;&nbsp;Submit</Button>
+                </div>
               </Modal.Description>
             </Modal.Content>
             </Form>

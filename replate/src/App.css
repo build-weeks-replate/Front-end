@@ -312,6 +312,27 @@ div.ui.huge.header{
   justify-content: center;
   align-items: center;
 }
+.modalForm{
+  width: 80% !important;
+  margin: 0 auto!important;
+}
+.modalHeader{
+  margin-bottom: 25px!important;
+  display: flex!important;
+  align-items: center!important;
+  color: #1F5C70!important;
+}
+.modalHeader .truck.big.icon{
+  margin-right: 10px!important;
+}
+.ui button.submitModalBtn{
+  width: 80% !important;
+  margin-bottom: 10px;
+}
+
+.submitModalBtnContainer{
+  text-align: center!important;
+}
 
 .ui button.btnDash{
   width: 100%!important;
@@ -325,7 +346,6 @@ div.ui.huge.header{
 .divider{
   width: 100% !important;
 }
-
 
 /* Responsiveness */
 @media only screen and (max-width: 700px) {
