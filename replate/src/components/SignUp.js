@@ -24,14 +24,14 @@ const HomePage = () => {
       <img src={logo} className="logoRGB" alt="Replate Logo RGB" />
       <Heading>HELP END HUNGER IN YOUR COMMUNITY. SIGN UP FOR REPLATE TO JOIN THE FIGHT.</Heading>
       <Card.Group>
-        <Card as={Link} to="/business_signUp" className="card">
+        <Card as={Link} to="/business_signup" className="card">
           <Card.Content>
             <img src={foodPlate} className="icon-foodplate" alt="Dish Icon" />
             <Card.Header>I'M A BUSINESS</Card.Header>
             <Button type="Submit">I want to donate food</Button>
           </Card.Content>
         </Card>
-        <Card as={Link} to="/volunteer" className="card">
+        <Card as={Link} to="/volunteer_signup" className="card">
           <Card.Content>
             <img src={handShake} className="icon-handshake" alt="Hand Shaking Icon" />
             <Card.Header>I'M A VOLUNTEER</Card.Header>

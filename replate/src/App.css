@@ -2,6 +2,26 @@
   text-align: center;
 }
 
+h1{
+  font-size: 3rem;
+}
+
+p{
+  font-size: 1.2em;
+  color: #1F5C70;
+}
+
+p a{
+  color: #FBA01D;
+  font-weight: bold;
+}
+
+p a:hover{
+  color: #FFBA37;
+  transition: ease .4s;
+  border-bottom: 1px dashed #FFBA37;
+}
+
 .ui.container {
   padding: 90px 0 !important;
 }
@@ -272,6 +292,60 @@ button.ui.button{
   margin-top: 10px !important;
 }
 
+.results{
+  position: absolute !important;
+  top: 40px !important;
+  width: 100% !important;
+}
+.user-icon{
+  color: #FBA01D;
+}
+
+div.ui.huge.header{
+  color: #1F5C70;
+  text-align: center;
+}
+
+.modalBtn{
+  width: 20%!important;
+  display: flex!important;
+  justify-content: center;
+  align-items: center;
+}
+.modalForm{
+  width: 80% !important;
+  margin: 0 auto!important;
+}
+.modalHeader{
+  margin-bottom: 25px!important;
+  display: flex!important;
+  align-items: center!important;
+  color: #1F5C70!important;
+}
+.modalHeader .truck.big.icon{
+  margin-right: 10px!important;
+}
+.ui button.submitModalBtn{
+  width: 80% !important;
+  margin-bottom: 10px;
+}
+
+.submitModalBtnContainer{
+  text-align: center!important;
+}
+
+.ui button.btnDash{
+  width: 100%!important;
+}
+
+.logoutBtn{
+  width: 30%!important;
+  margin-bottom: 20px!important;
+}
+
+.divider{
+  width: 100% !important;
+}
 
 /* Responsiveness */
 @media only screen and (max-width: 700px) {
@@ -301,6 +375,19 @@ button.ui.button{
     width: 100% !important;
     margin: 10px;
   }
+}
+
+button[type=submit]{
+  width: 85% !important;
+  margin-right: 0 !important;
+}
+
+.ui button.btnBack{
+  background: #1F5C70!important;
+  margin-right: 0 !important;
+}
+.ui button.btnBack:hover {
+  background: #528FA3!important;
 }
 
 @media only screen and (min-width: 701px) and (max-width: 1050px) {

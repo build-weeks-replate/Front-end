@@ -1,25 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Field, withFormik, Form } from 'formik';
-import { Button, Header } from 'semantic-ui-react';
+import { Button, Header, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import handShake from '../images/hands-helping-solid@2x.png';
+import handShake from '../../images/hands-helping-solid@2x.png';
 import axios from 'axios';
 import * as Yup from 'yup';
 
-const Circle = styled.div`
-  background: #FBA01D;
-  border-radius: 100px;
-  width: 50px;
-  height: 50px;
-  text-align: center;
-`
-const CircleNumber = styled.h1`
-  position: relative;
-  color: #FFF;
-  top: 6px;
-  font-weight: bold;
-`
 const Heading = styled.div`
   display: flex;
   margin-bottom: 8px;
@@ -43,12 +30,13 @@ const LeftContent = styled.div`
 const RightContent = styled.div`
   width: 60%;
 `
-const BackButton = styled.div`
+const LoginLink = styled.div`
+  text-align: right;
+  margin-top: 10px;
+`
+const Buttons = styled.div`
   display: flex;
-  justify-content: center;
-  // border: 2px solid black;
-  margin: 1rem 0;
-  width: 100%; 
+  justify-content: space-between;
 `
 
 const VolunteerSignUp = ({ errors, touched, values, status }) => {
@@ -71,10 +59,8 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
       <RightContent>
         <Form>
           <Heading>
-            <Circle>
-              <CircleNumber>1</CircleNumber>
-            </Circle>
-            <StyledH1>Create Your Account</StyledH1>
+            <Icon className="user-icon" name="user" size="huge" />
+            <StyledH1>Create Your Volunteer Account</StyledH1>
           </Heading>
           <label>
             Volunteer Name
@@ -82,7 +68,7 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
               component="input"
               type="text"
               name="username"
-              placeholder="Name"
+              placeholder="Volunteer Name"
             />
           </label>
           {touched.username && errors.username && (
@@ -160,14 +146,13 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
           {touched.volunteerRepeatPassword && errors.volunteerRepeatPassword && (
             <p className="error">{errors.volunteerRepeatPassword}</p>
           )}
-          <Button type="submit">Submit!</Button>
-          <BackButton>
-            <Link to="/signup"><Button type="submit">Back</Button></Link>
-          </BackButton>
-          {volunteers.map((volunteer) => (
-            <p key={volunteer.id}>{volunteer.username}</p>
-          ))
-          }
+          <Buttons>
+            <Link to="/signup"><Button className="btnBack">Back</Button></Link>
+            <Button type="submit">Sign&nbsp;Up</Button>
+          </Buttons>
+          <LoginLink>
+            <p>Already have a volunteer account? <Link to="/volunteer_login">Login</Link></p>
+          </LoginLink>
         </Form>
       </RightContent>
     </MainContent>
