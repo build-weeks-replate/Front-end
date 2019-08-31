@@ -94,6 +94,8 @@ const BusinessDashboard = (props) => {
     )
       .then(res => {
         console.log(res);
+        props.history.push("/empty");
+        props.history.push("/business_dashboard");
       })
       .catch(err => {
         console.log(err);
