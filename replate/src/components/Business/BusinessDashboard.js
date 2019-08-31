@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Icon, Card, Button, Modal, Form, Divider, Image } from 'semantic-ui-react';
+import { Icon, Card, Button, Modal, Form, Divider, Label } from 'semantic-ui-react';
 import styled from 'styled-components';
-import axios from 'axios';
 import axiosWithAuth from "../axiosWithAuth";
 
 const MainContent = styled.div`
@@ -44,27 +43,20 @@ const Heading = styled.h3`
 `
 const Donation = styled.div`
   display: flex;
+  flex-direction: row;
   margin: 10px;
+  flex-wrap: wrap;
+  justify-content: space-between;
 `
 const BusinessDashboard = (props) => {
-  const axiosAuth = (token) => {
-    axios.post(`https://bw-replate.herokuapp.com/api/food`, token)
-      .then(res => {
-        localStorage.setItem('token', res.data.token);
-        props.history.push("/business_dashboard");
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
   const [newFood, setNewFood] = useState({
     user: "",
     foods: [],
     visible: false,
     id: ""
   });
-  useEffect(() => {
 
+  useEffect(() => {
     axiosWithAuth().get("https://bw-replate.herokuapp.com/api/food/business")
       .then(res => {
         setNewFood({
@@ -78,19 +70,22 @@ const BusinessDashboard = (props) => {
         console.log(err)
       })
   }, [])
+
+
   const handleChange = e => {
     setNewFood({
       ...newFood,
       [e.target.name]: e.target.value
     });
   }
+
   const handleSubmit = e => {
     const food = {
       name: newFood.name,
       pickup_date: newFood.pickup_date,
       time: newFood.time,
       description: newFood.description,
-      is_claimed: 0,
+      is_claimed: newFood.is_claimed,
     }
 
     e.preventDefault();
@@ -98,13 +93,13 @@ const BusinessDashboard = (props) => {
       "https://bw-replate.herokuapp.com/api/food", food
     )
       .then(res => {
-        console.log(res)
+        console.log(res);
       })
       .catch(err => {
-        console.log(err)
+        console.log(err);
       })
   }
-
+  
   return (
     <div>
       <Title>
@@ -128,17 +123,14 @@ const BusinessDashboard = (props) => {
         </Card>
         <Card className="dashboard-office-location">
           <Card.Content>
-            <Add>
-              <Icon name="plus circle" className="plus-circle-link-icon" size="big" />
-              <h4 className="add-location-text">Add Another Location</h4>
-            </Add>
+            <Button className="modalBtnOffice" icon><Icon name="plus" size="large" />&nbsp;&nbsp;<span className="modalBtnTxt">Add Another Location</span></Button>
           </Card.Content>
         </Card>
       </MainContent>
       <BottomContent>
-        <Heading><Icon name="truck" />Pick Up Schedule</Heading>
+        <Heading><Icon name="truck"/>Pick Up Schedule</Heading>
         <Add>
-          <Modal trigger={<Button className="modalBtn" icon><Icon name="plus" size="large" />&nbsp;&nbsp;<span className="modalBtnTxt">Make your first donation</span></Button>}>
+          <Modal trigger={<Button className="modalBtn" icon><Icon name="plus" size="large" />&nbsp;&nbsp;<span className="modalBtnTxt">Make A Donation</span></Button>}>
             <Modal.Header className="modalHeader">
               <Icon name="truck" size="big" />Schedule New Pickup
             </Modal.Header>
@@ -151,7 +143,7 @@ const BusinessDashboard = (props) => {
                   </Form.Field>
                   <Form.Field className="modalForm">
                     <label>Pickup Date</label>
-                    <input placeholder="Pickup Date" type="date" name="pickup_date" value={newFood.date} onChange={handleChange} />
+                    <input placeholder="Pickup Date" type="date" name="pickup_date" value={newFood.pickup_date} onChange={handleChange} />
                   </Form.Field>
                   <Form.Field className="modalForm">
                     <label>Pickup Time</label>
@@ -176,13 +168,30 @@ const BusinessDashboard = (props) => {
         </Add>
         <Donation>
           {newFood.foods.map(food => {
+            const handleDelete = (e) => {
+              e.preventDefault();
+              axiosWithAuth().delete(`https://bw-replate.herokuapp.com/api/food/${food.id}`)
+                .then(res => {
+                  console.log(res);
+                  console.log(res.data);
+                  props.history.push("/empty");
+                  props.history.push("/business_dashboard");
+                })
+
+            }
             return (
               <Card className="donation">
                 <Card.Content>
-                  <div>
-                    <p>{food.name}</p>
-                    <p>{food.pickup_date}</p>
-                    <p>{food.time}</p>
+                  <Label onClick={handleDelete} icon={{name:'delete', color:'red'}} corner="left" />
+                  <div className="donationContent">
+                    <p><strong>Food Item:</strong><span> {food.name}</span></p>
+                    <p><strong>Pickup Date:</strong><span> {food.pickup_date}</span></p>
+                    <p><strong>Pickup Time:</strong><span> {food.time}</span></p>
+                    <Button.Group>
+                      <Button icon><Icon name="eye" />&nbsp;&nbsp;View</Button>
+                      <Button.Or />
+                      <Button icon><Icon name="edit" />&nbsp;&nbsp;Edit</Button>
+                    </Button.Group>
                   </div>
                 </Card.Content>
               </Card>)

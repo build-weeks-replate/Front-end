@@ -28,14 +28,14 @@ const HomePage = () => {
           <Card.Content>
             <img src={foodPlate} className="icon-foodplate" alt="Dish Icon" />
             <Card.Header>I'M A BUSINESS</Card.Header>
-            <Button type="Submit">I want to donate food</Button>
+            <Button className="homeBtn" type="Submit">I want to donate food</Button>
           </Card.Content>
         </Card>
         <Card as={Link} to="/volunteer_signup" className="card">
           <Card.Content>
             <img src={handShake} className="icon-handshake" alt="Hand Shaking Icon" />
             <Card.Header>I'M A VOLUNTEER</Card.Header>
-            <Button type="submit">I want to receive donations</Button>
+            <Button className="homeBtn" type="submit">I want to receive donations</Button>
           </Card.Content>
         </Card>
       </Card.Group>
