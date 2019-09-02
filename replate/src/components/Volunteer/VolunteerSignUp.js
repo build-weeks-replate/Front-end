@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import handShake from '../../images/hands-helping-solid@2x.png';
 import axios from 'axios';
 import * as Yup from 'yup';
+import history from '../history';
 
 const Heading = styled.div`
   display: flex;
@@ -49,6 +50,29 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
     }
   }, [status]);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const user = {
+      username: values.username,
+      password: values.password,
+      organization_name: values.organization_name,
+      email: values.email,
+      password: values.password,
+      phone: values.phone,
+      address: values.address
+    }
+    console.log(values)
+    axios
+      .post("https://bw-replate.herokuapp.com/api/auth/volunteer/register", user)
+      .then(res => {
+        console.log("handleSubmit: then: res: ", res);
+        localStorage.setItem('token', res.data.token);
+        history.push('/volunteer_dashboard');
+      })
+      .catch(err => console.error("handleSubmit: catch: err: ", err));
+  }
+
   return (
     <MainContent>
       <LeftContent>
@@ -57,7 +81,7 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
         <p>Thank you For your interest in Replate and joining the fight to end hunger.</p>
       </LeftContent>
       <RightContent>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Heading>
             <Icon className="user-icon" name="user" size="huge" />
             <StyledH1>Create Your Volunteer Account</StyledH1>
@@ -179,29 +203,6 @@ const formikHOC = withFormik({
     volunteerRepeatPassword: Yup.string().required("Passwords must match"),
     address: Yup.string().required("Please enter your address.")
   }),
-  handleSubmit(values, { setStatus, resetForm }) {
-    values.phone = parseInt(values.phone)
-
-    const user = {
-      username: values.username,
-      password: values.password,
-      organization_name: values.organization_name,
-      address: values.address,
-      email: values.email,
-      password: values.password,
-      phone: values.phone,
-      address: values.address
-    }
-    console.log(values)
-    axios
-      .post("https://bw-replate.herokuapp.com/api/auth/volunteer/register", user)
-      .then(res => {
-        console.log("handleSubmit: then: res: ", res);
-        setStatus(res.data);
-        resetForm();
-      })
-      .catch(err => console.error("handleSubmit: catch: err: ", err));
-  }
 });
 const VolunteerSignUpWithFormik = formikHOC(VolunteerSignUp);
 
