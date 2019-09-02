@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Field, withFormik, Form } from 'formik';
 import { Button, Header, Icon } from 'semantic-ui-react';
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import icon from '../../images/foodPlate.svg';
 import axios from 'axios';
 import * as Yup from 'yup';
@@ -39,7 +39,7 @@ const Buttons = styled.div`
   justify-content: space-between;
 `
 
-const BusinessSignUp = ({ errors, touched, values, status }) => {
+const BusinessSignUp = ({ errors, touched, values, status, props }) => {
   const [businesss, setBusinesss] = useState([]);
   console.log(businesss);
 
@@ -148,14 +148,18 @@ const BusinessSignUp = ({ errors, touched, values, status }) => {
           )}
           <Buttons>
             <Link to="/signup"><Button className="btnBack">Back</Button></Link>
-            <Button type="submit">Sign&nbsp;Up</Button>
+            <Button
+              onClick={() => {
+                props.history.push("/business_dashboard");
+              }}>Sign&nbsp;Up
+            </Button>
           </Buttons>
           <LoginLink>
             <p>Already have a business account? <Link to="/business_login">Login</Link></p>
           </LoginLink>
         </Form>
       </RightContent>
-    </MainContent>
+    </MainContent >
   );
 };
 
