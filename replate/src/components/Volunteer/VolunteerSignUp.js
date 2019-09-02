@@ -147,7 +147,7 @@ const VolunteerSignUp = ({ errors, touched, values, status }) => {
             <p className="error">{errors.volunteerRepeatPassword}</p>
           )}
           <Buttons>
-            <Link to="/signup"><Button className="btnBack">Back</Button></Link>
+            <Link exact to="/"><Button className="btnBack">Back</Button></Link>
             <Button type="submit">Sign&nbsp;Up</Button>
           </Buttons>
           <LoginLink>

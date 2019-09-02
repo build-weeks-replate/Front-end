@@ -41,20 +41,12 @@ button.ui.button:hover {
   font-weight: bold;
 }
 
-.back-button {
-  border: 2px solid black;
-}
-
 .ui.form input:not([type]), .ui.form input[type=date], .ui.form input[type=datetime-local], .ui.form input[type=email], .ui.form input[type=file], .ui.form input[type=number], .ui.form input[type=password], .ui.form input[type=search], .ui.form input[type=tel], .ui.form input[type=text], .ui.form input[type=time], .ui.form input[type=url] {
   border: 1px solid #1F5C70 !important;
 }
 
 .ui.form input:not([type]), .ui.form input[type=date]:focus, .ui.form input[type=datetime-local]:focus, .ui.form input[type=email]:focus, .ui.form input[type=file]:focus, .ui.form input[type=number]:focus, .ui.form input[type=password]:focus, .ui.form input[type=search]:focus, .ui.form input[type=tel]:focus, .ui.form input[type=text]:focus, .ui.form input[type=time]:focus, .ui.form input[type=url]:focus {
   border: 1px solid #FBA01D !important;
-}
-
-i.icon.gift {
-  font-size: 10em !important;
 }
 
 .dishicon {
@@ -140,12 +132,8 @@ h5 {
 }
 
 .ui.card.donation {
-  margin-right: 20px !important;
-  width: 25%;
-}
-
-.ui.card.donation:last-child {
-  margin-right: 0px !important;
+  width: 32.7%;
+  margin-bottom: 11px!important;
 }
 
 div.ui.card.dashboard-office-location{
@@ -288,7 +276,7 @@ p.error{
   margin-top: 0px;
 }
 
-button.ui.button{
+button.ui.button.homeBtn{
   margin-top: 10px !important;
 }
 
@@ -308,6 +296,11 @@ div.ui.huge.header{
 
 .modalBtn{
   width: 20%!important;
+  display: flex!important;
+  justify-content: center;
+  align-items: center;
+}
+.modalBtnOffice{
   display: flex!important;
   justify-content: center;
   align-items: center;
@@ -336,6 +329,19 @@ div.ui.huge.header{
 
 .ui button.btnDash{
   width: 100%!important;
+}
+
+.ui.buttons{
+  width: 49%;
+  margin-top: 5px!important;
+}
+
+.donationContent{
+  width: 70%;
+}
+
+div.or{
+  margin: 0px 2px;
 }
 
 .logoutBtn{

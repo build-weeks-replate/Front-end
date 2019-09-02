@@ -35,7 +35,7 @@ const Routes = () => {
   );
   return (
     <div>
-      <Route path="/signup" component={SignUp} />
+      <Route exact path="/" component={SignUp} />
       <Route path="/business_signup" component={BusinessSignUp} />
       <Route path="/business_login" component={BusinessLogin} />
       <PrivateRouteBusiness path="/business_dashboard" component={BusinessDashboard} />
